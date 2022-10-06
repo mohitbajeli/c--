@@ -38,6 +38,6 @@ print(story.count("m")) # counts the charaacter and string in the string
 print(story.capitalize())
 
 #escape sequence 
-r = "mohit is learning \python \n main motive is to learn machine learning"
+r = "mohit is learning python \n main motive is to learn machine learning"
 print(r)  # \n new line \t tab space 
 

@@ -21,8 +21,8 @@ int main()
         int n;
         cout<<"enter no of values in vector "<<endl;
         cin>>n;
-        vector<int>temp;
-        for(int j=0;j<n;j++)
+        vector<int>temp; // here we will use temp vector to store values of a individual vector as a vector is not defined like in the case of vector of vector 
+                for(int j=0;j<n;j++)
         {
             int x;
             cin>>x;
@@ -33,5 +33,6 @@ int main()
     for(int i=0;i<N;i++)
     {
         printvec(v[i]);
+        cout<<endl;
     }
 }

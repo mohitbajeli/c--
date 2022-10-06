@@ -22,7 +22,7 @@ int main()
         v.push_back(x);
     }
 
-    vector<int>&v2=v;
+    vector<int>&v2=v;  //if we pass reference then changes in one vector will be reflected in another vector.
     v2.push_back(5);
     printvec(v);
     cout<<"printing v2"<<endl;

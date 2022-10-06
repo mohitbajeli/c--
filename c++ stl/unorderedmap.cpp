@@ -5,8 +5,8 @@ using namespace std;
 
 int main()
 {
-    unordered_map<string,int>m;
-    int n;
+    unordered_map<string,int>m;  //same as maps but printed in random order and time complexity is 0(1) and cannot use complex 
+         int n;                  // data structures in keys i.e vector,pair,sets etc.
     cout<<"enter no of strings"<<endl;
     cin>>n;
     cout<<"enter strings"<<endl;
