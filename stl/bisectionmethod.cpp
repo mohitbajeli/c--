@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-
+ 
 double solution(double x)
 {
-    return x*x*x - 2*x - 5;
+    return x*x*x - 2*x -5;
 }
 
 int ibt(double a,double x,double b)
@@ -21,48 +21,45 @@ int ibt(double a,double x,double b)
     {
         return -1;
     }
-}                                                                                                                                                                                                                                                                                                                                                                                                  
+
+}
+
 int main()
 {
- double temp = 0;
- double a ;
- double b ;
- double x;
- cout<<"the value for 1 iteration is"<<temp<<endl;
- for(int i=1;i<20;i++)
- {
-    double temp_iter = i;
-    cout<<"the value of "<<i<<" is "<<solution(temp_iter)<<endl;
-    if(((solution(temp))>0 && (solution(temp_iter<0))|| (solution(temp))<0 && solution(temp_iter)>0))
+    double temp = 0;
+    double a,b;
+    cout<<"the value of 1 iteration is "<<solution(0)<<endl;
+    for(int i = 1 ;i<20;i++)
     {
-        a = temp;
-        b= temp_iter;
-        break;
+        int temp_iter = i ;
+        cout<<"the value of "<<i<<" iteration is "<<solution(i)<<endl;
+        if((solution(temp)<0 && solution(temp_iter)>0) || (solution(temp)>0 && solution(temp_iter)<0))
+        {
+            a= temp;
+            b=temp_iter;
+            break;
+        }
+        else
+        {
+            temp = temp_iter;
+        }
     }
-    else{
-        temp =temp_iter;
-    }
- }
- cout<<"the value of a is "<<a<<endl;
- cout<<"the value of b is "<<b<<endl;
-
- x=(a+b)/2;
- 
- while((x-a)>0.0001 || (x-b)>0.0001)
- {
-    int check_ibt = ibt(a,x,b);
-    if(check_ibt == 1)
-    {
-        b = x;
-    }
-    else if(check_ibt == 0)
-    {
-        a = x;
-    }
-    x= (a+b)/2;
-
- }
- cout<<"value of x is "<<x;
-
-
+       double x = (a+b)/2;
+       cout<<"the value of a is "<<a<<" "<<"and b is "<<b<<endl;
+       while((x-a)>=0.0001 || (x-b)>=0.0001)
+       {
+        int check_ibt = ibt(a,x,b);
+        if(check_ibt == 1)
+        {
+            b=x;
+        }
+        else if(check_ibt == 0)
+        {
+            a=x;
+        }
+        x=(a+b)/2;
+       } 
+       cout<<"the value of x is "<<x<<endl;
+       return 0;
+    
 }
