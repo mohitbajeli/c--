@@ -4,7 +4,7 @@ using namespace std;
  
 double solution(double x)
 {
-    return x*x*x - 2*x -5;
+    return (x)*log10(x)-1.2;
 }
 
 int ibt(double a,double x,double b)
@@ -32,7 +32,7 @@ int main()
     for(int i = 1 ;i<20;i++)
     {
         int temp_iter = i ;
-        cout<<"the value of "<<i<<" iteration is "<<solution(i)<<endl;
+        cout<<"the value of "<<i<<" iteration is "<< solution(i)<<endl;
         if((solution(temp)<0 && solution(temp_iter)>0) || (solution(temp)>0 && solution(temp_iter)<0))
         {
             a= temp;
