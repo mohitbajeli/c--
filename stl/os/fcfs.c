@@ -1,75 +1,102 @@
+=
+*/
 #include<stdio.h>
+#include <stdlib.h>
+struct process_struct
+{
+  int pid;  
+  int at;       //Arrival Time
+  int bt;       //CPU Burst time 
+  int ct,wt,tat,rt,start_time;   // Completion, waiting, turnaround, response time
+}ps[100];       //Array of structure to store the info of each process.   
+
+
+int findmax(int a, int b)
+{
+    return a>b?a:b;
+}
+
+int comparatorAT(const void * a, const void *b)
+{
+   int x =((struct process_struct *)a) -> at;
+   int y =((struct process_struct *)b) -> at;
+   if(x<y)
+     return -1;  // No sorting
+   else if( x>=y) // = is for stable sort
+    return 1;    // Sort
+} 
+
+int comparatorPID(const void * a, const void *b)
+{
+   int x =((struct process_struct *)a) -> pid;
+   int y =((struct process_struct *)b) -> pid;
+   if(x<y)
+     return -1;  // No sorting
+   else if( x>=y)
+    return 1;    // Sort  
+} 
+
 int main()
 {
-    int p[10],at[10],bt[10],ct[10],tat[10],wt[10],temp=0,i,j,n;
-
-    float atat = 0,awt = 0;
-
-    printf("enter the no of process\n");
+    int n;
+    printf("Enter total number of processes: ");
     scanf("%d",&n);
+    float sum_tat=0,sum_wt=0,sum_rt=0;
+    int length_cycle,total_idle_time=0;
+    float cpu_utilization;
     
-    printf("enter %d process\n",n);
-    for(i = 0;i<n;i++){
-    scanf("%d",&p[i]);
-    }
-
-    printf("enter %d arrival time\n",n);
-    for(i=0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
-        scanf("%d",&at[i]);
+        printf("\nEnter Process %d Arrival Time: ",i);
+        scanf("%d",&ps[i].at);
+        ps[i].pid = i ;
     }
-
-    printf("enter %d burst time\n",n);
-    for(i=0;i<n;i++)
+    
+    for(int i=0;i<n;i++)
     {
-        scanf("%d",&bt[i]);
+        printf("\nEnter Process %d Burst Time: ",i);
+        scanf("%d",&ps[i].bt);
     }
-    for(i=0;i<n;i++)
+    
+
+    //sort
+    qsort((void *)ps,n, sizeof(struct process_struct),comparatorAT);
+   
+   //calculations
+    for(int i=0;i<n;i++)
     {
-        for(j=0;j<(n-i);j++)
-        {
-          if(at[j]>at[j+1])
-          {
-            temp = p[j+1];
-            p[j+1]=p[j];
-            p[j]=temp;
-            temp= at[j+1];
-            at[j+1]=at[j];
-            at[j]=temp;
-            temp = bt[j+1];
-            bt[j+1]=bt[j];
-            bt[j]=temp;
-
-          }
-
-        }
+      ps[i].start_time = (i==0) ? ps[i].at : findmax(ps[i].at, ps[i-1].ct);  
+      ps[i].ct =  ps[i].start_time + ps[i].bt;
+      ps[i].tat = ps[i].ct-ps[i].at;       
+      ps[i].wt = ps[i].tat-ps[i].bt;
+      ps[i].rt=ps[i].wt;
+       
+      sum_tat += ps[i].tat;
+      sum_wt += ps[i].wt;
+      sum_rt += ps[i].rt;
+      total_idle_time += (i==0) ? 0 : (ps[i].start_time -  ps[i-1].ct);
     }
-        ct[0]=at[0]+bt[0];
-        for(i =1;i<n;i++)
-        {
-            temp =0;
-            if(ct[i-1]<at[i])
-            {
-                temp=at[i]-ct[i-1];
-            }
-            ct[i]=ct[i-1]+bt[i]+temp;
-        }
+    
+    length_cycle = ps[n-1].ct - ps[0].start_time; 
+    
+    
+    qsort((void *)ps,n, sizeof(struct process_struct),comparatorPID);
 
-        for(i=0;i<n;i++)
-        {
-            tat[i]=ct[i]-at[i];
-            wt[i] = tat[i]-bt[i];
-            atat+=tat[i];
-            awt+=wt[i];
-        }
-        atat = atat/n;
-        awt = awt/n;
-        printf("\n pid\t AT\t BT\t CT\t TAT\t WT\t \n");
-        for(i=0;i<n;i++){
-        printf("\n p%d\t %d\t %d\t %d\t %d\t %d\t \n",p[i],at[i],bt[i],ct[i],tat[i],wt[i]);
-        }
-        printf("average turnaround time is %f \n",atat);
-        printf("avearge waiting time is %f \n",awt);
-        return 0;
+    //Output
+    printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
+    for(int i=0;i<n;i++)
+     printf("%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
 
-    }
+    printf("\n");    
+    
+    cpu_utilization = (float)(length_cycle - total_idle_time)/ length_cycle;
+
+    printf("\nAverage Turn Around time= %f ",sum_tat/n);
+    printf("\nAverage Waiting Time= %f ",sum_wt/n);
+    printf("\nAverage Response Time= %f ",sum_rt/n);
+    printf("\nThroughput= %f",n/(float)length_cycle);    
+    printf("\nCPU Utilization(Percentage)= %f",cpu_utilization*100);
+
+    printf("\n");
+    return 0;
+}
