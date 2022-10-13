@@ -28,7 +28,7 @@ int main()
     int n;
     bool is_completed[100]={false},is_first_process=true;
     int current_time = 0;
-    int completed = 0;;
+    int completed = 0;
     printf("Enter total number of processes: ");
     scanf("%d",&n);    
     int sum_tat=0,sum_wt=0,sum_rt=0,total_idle_time=0,prev=0,length_cycle;
