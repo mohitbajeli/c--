@@ -12,4 +12,4 @@ int main()
       cout<<(*it)<<endl;
     }
 }
-//aksdmcdslhgfhg
+//adscas
