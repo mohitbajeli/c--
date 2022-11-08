@@ -1,26 +1,45 @@
 #include<stdio.h>
+#include<math.h>
 
-double solution(double x)
+double function(double x)
 {
-    return x*x*x - 2*x - 5;
+    return x*x*x-4*x-9;
 }
-
-double bisect(double x1, double x2)
-{
-    return (x1+x2)/2;
-}
-
 
 int main()
 {
-    int n;
-    double x1,x2,x;
-    printf("enter the no of iteration\n");
-    scanf("%d",&n);
-    do
+    double a,b;
+    for(int i = -5;i<=5;i++)
     {
-      
-       scanf("%")
-    } 
-    
+        a=i;
+        b=i+1;
+        if(function(a)*function(b)<0)
+        {
+            break;
+        }
+    }
+    printf("a = %lf b = %lf\n",a,b);
+
+    double x;
+    int steps = 0;
+    double fa,fb,fx;
+    do{
+        fa = function(a);
+        fb = function(b);
+        x = (a+b)/2;
+        fx = function(x);
+        if(fa*fx<0)
+        {
+            b=x;
+        }
+        else if(fb*fx<0)
+        {
+            a=x;
+        }
+        printf("iteration  = %d x = %lf\n",++steps,x);
+
+    }while(fabs(x-a)>=0.0001 || fabs(x-b)>=0.001);
+    printf("root is %lf",x);
+
+
 }
