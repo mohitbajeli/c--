@@ -37,9 +37,9 @@ int main()
         x1 = b;
         b = x;
       }
-    printf("iteration  = %d x = %lf\n",++steps,x);
+    printf("iteration  = %d x = %.4lf\n",++steps,x);
 }while(fabs(x-x1)>=0.0001);
 
-printf("root is %lf\n",x);
+printf("root is %.4lf\n",x);
 return 0;
 }
