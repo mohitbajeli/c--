@@ -21,12 +21,11 @@ void convertToUpperTriangular(float a[][n+1],int n)
              printf("Intermediate forms:\n");
              for( x=0;x<n;x++)
              {
-               for(y=0;y<n+1;y++)
+               for(y=0;y<n+1;y++){
                   printf("%.2f ",a[x][y]);
                printf("\n");   
              }
-             
-             
+             }
          } 
       }
      }
