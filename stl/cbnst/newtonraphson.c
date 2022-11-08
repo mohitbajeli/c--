@@ -2,7 +2,7 @@
 #include <math.h>
 
 double function(double x){
-    return x*tan(x)+1;
+    return (x*tan(x))+1;
     //return x*x*x - 3*x -5;
     //return x*sin(x) + cos(x);
 }
@@ -14,19 +14,19 @@ double derivative(double x){
 }
 
 double ex(double x){
-    return (x - (function(x)/derivative(x)));
+    return x - (function(x)/derivative(x));
 }
 
 int main(){
-    double a, b;
+    double a=2, b=3;
 
-    for (int i = 0; i <= 5; i++){
+    /*for (int i = 0; i <= 5; i++){
         a = i;
         b = i+1;
         if (function(a)*function(b) < 0){
             break;
         }
-    }
+    }*/
 
 /*
     printf("Enter the value of a: ");
@@ -45,9 +45,9 @@ int main(){
         x1 = x;
         x = ex(x);
         
-        printf("Interation %d, x : %lf\n", ++step, x);
+        printf("Interation %d, x : %.4lf\n", ++step, x);
 
     }while(fabs(x-x1) >= 0.001);
 
-    printf("x : %lf\n", x);
+    printf("x : %.4lf\n", x);
 }
