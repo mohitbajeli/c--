@@ -1,6 +1,6 @@
 //C Program to Implement Newton Raphson Method
 #include<stdio.h>
-#include<math.h>
+#include<math.h> 
 #define EPSILON 0.0001
 
 float f(float x)
