@@ -1,60 +1,45 @@
-#include <stdio.h>
-#include <math.h>
-#define e 2.71828182
+#include<stdio.h>
+#include<math.h>
 
-double function(double x){
-    return x*x*x-2*x-5;
-    //return x*x*x - x*x - 2;
-    //return x*x - log(x) -12;
-    //return x*pow(e,x)-3;
-    //return x*pow(e,x) - cos(x);
-    //return x*pow(e,x) - sin(x);
+double function(double x)
+{
+    return x-cos(x);
 }
 
-int main(){
-    double a, b;
-
-    for (int i = -5; i <= 5; i++){
-        a = i;
-        b = i+1;
-        if (function(a)*function(b) < 0){
+int main()
+{
+    double a,b,x,fx,fa,fb,x1;
+    int steps = 0;
+    for(int i=-5;i<=5;i++)
+    {
+        a=i;
+        b=i+1;
+        if(function(a)*function(b)<0)
+        {
             break;
         }
     }
+    printf("a = %lf b = %lf\n",a,b);
 
-/*
-    printf("Enter the value of a: ");
-    scanf("%lf",&a);
-    printf("Enter the value of b: ");
-    scanf("%lf",&b);
-*/
+    do
+    {
+      fa = function(a);
+      fb = function(b);
+      x  = (a*fb - b*fa)/(fb-fa);
+      fx = function(x);
+      if(fx<0)
+      {
+        x1 = a;
+        a=x;
+      }
+      else if(fx>0)
+      {
+        x1 = b;
+        b = x;
+      }
+    printf("iteration  = %d x = %lf\n",++steps,x);
+}while(fabs(x-x1)>=0.0001);
 
-    printf("a : %lf, b : %lf\n",a,b);
-
-    double fx, fa, fb, x, x1;
-    int step = 0;
-
-    do{
-        fa = function(a); 
-        fb = function(b);
-
-        x = (a*fb - b*fa)/(fb-fa);
-        fx = function(x);
-
-        printf("Iteration %d, x = %lf\n", ++step, x);
-  
-        if (fx < 0){
-            x1 = a;
-            a = x;
-        }
-
-        else if(fx > 0){
-            x1 = b;
-            b = x;
-        }
-
-    }while(fabs(x-x1) >= 0.0001);
-
-    printf("x : %lf\n", x);
-    
+printf("root is %lf\n",x);
+return 0;
 }
