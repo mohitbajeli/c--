@@ -5,12 +5,12 @@
 
 float f(float x)
 {
-    return x*x*x - 3*x -5;
+    return x*x*x - 4*x-9;
 }
 
 float differentiate(float x)
 {
-    return 3*x*x - 3;
+    return 3*x*x - 4;
 }
 
 int main()
@@ -42,7 +42,7 @@ int main()
     if(fabs(f(x1)) < fabs(f(x2)))
         x0 = x1;
     else
-        x1 = x2;    
+        x0 = x2;    
 
     //Apply Successive approximation to find the root b/w x1 and x2
     //..........Find root............   
