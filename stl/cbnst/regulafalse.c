@@ -27,12 +27,12 @@ int main()
       fb = function(b);
       x  = (a*fb - b*fa)/(fb-fa);
       fx = function(x);
-      if(fx<0)
+      if(fb*fx<0)
       {
         x1 = a;
         a=x;
       }
-      else if(fx>0)
+      else if(fa*fx<0)
       {
         x1 = b;
         b = x;
