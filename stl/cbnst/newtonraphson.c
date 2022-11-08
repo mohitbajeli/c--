@@ -1,53 +1,63 @@
-#include <stdio.h>
-#include <math.h>
+//C Program to Implement Newton Raphson Method
+#include<stdio.h>
+#include<math.h>
+#define EPSILON 0.0001
 
-double function(double x){
-    return (x*tan(x))+1;
-    //return x*x*x - 3*x -5;
-    //return x*sin(x) + cos(x);
+float f(float x)
+{
+    return x*x*x - 3*x -5;
 }
 
-double derivative(double x){
-    return tan(x)+x*(1/(cos(x)*cos(x)));
-   // return 3*x*x - 3;
-    //return x*cos(x);
+float differentiate(float x)
+{
+    return 3*x*x - 3;
 }
 
-double ex(double x){
-    return x - (function(x)/derivative(x));
-}
+int main()
+{
+    int maxIteration,i;
+    float x1,x2,x,x0;
+    printf("Enter Maximum no of Iterations\n");
+    scanf("%d",&maxIteration);
 
-int main(){
-    double a=2, b=3;
-
-    /*for (int i = 0; i <= 5; i++){
-        a = i;
-        b = i+1;
-        if (function(a)*function(b) < 0){
+//......Compute x1 and x2............. 
+   
+   do
+   {
+        printf("Enter the value of x1 and x2(starting boundary)");
+        scanf("%f%f",&x1,&x2);
+        if(f(x1)*f(x2)>0)
+        {
+           printf("Boundary Values are Invalid\n");
+           continue;
+        }
+        else
+        {
+            printf("Roots Lie between %f and %f\n",x1,x2);
             break;
         }
-    }*/
+    } while(1);
 
-/*
-    printf("Enter the value of a: ");
-    scanf("%lf",&a);
-    printf("Enter the value of b: ");
-    scanf("%lf",&b);
-*/
+    //find x0
+    if(fabs(f(x1)) < fabs(f(x2)))
+        x0 = x1;
+    else
+        x1 = x2;    
 
-    printf("a : %lf ,  b : %lf\n", a, b);
-
-    double x = (a+b)/2;
-    double x1;
-    int step = 0;
-
-    do{
-        x1 = x;
-        x = ex(x);
-        
-        printf("Interation %d, x : %.4lf\n", ++step, x);
-
-    }while(fabs(x-x1) >= 0.001);
-
-    printf("x : %.4lf\n", x);
+    //Apply Successive approximation to find the root b/w x1 and x2
+    //..........Find root............   
+    for(i=1;i<=maxIteration;i++)
+    {
+      x = x0 - (f(x0)/differentiate(x0));  
+      
+      if(fabs(x-x0)<EPSILON)
+      {       
+            printf("Iterations=%d  Final Root=%f\n",i,x);
+           return 0;
+      }      
+      printf("Iterations=%d  Roots=%f\n",i,x); 
+      x0=x;
+    }
+    printf("Root=%f  Total Iterations=%d",x,--i);
+    return 0;
 }
