@@ -20,4 +20,4 @@ int main()
     pair<int,int>p = getMinMax(a,3);
     cout<<"min element is "<<p.first<<endl;
     cout<<"max element is "<<p.second;
-}//hjk
+}//hjkhjhjk
