@@ -19,4 +19,4 @@ int main()
     cin>>n;
     cout<<"the sum of "<<n<<" no is "<<sum(n);
     return 0;
-}
+}//sfs
