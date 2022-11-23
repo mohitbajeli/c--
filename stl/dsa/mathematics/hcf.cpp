@@ -18,7 +18,7 @@ int hcf(int a,int b)
 
     }
     return a;
-}
+}//dss
 
 int main()
 {
