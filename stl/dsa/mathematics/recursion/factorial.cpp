@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int fact(int n)
+long long int fact(int n)
 {
     if(n==0||n==1)
     {
@@ -14,10 +14,10 @@ int fact(int n)
 
 int main()
 {
-   int n ;
+   long long int n ;
    cout<<"enter the no "<<endl;
    cin>>n;
 
-   cout<<"the factorialof a no is "<<endl;
+   cout<<"the factorial of a no is "<<endl;
    cout<<fact(n);
-}
+}//fdsfsdf
