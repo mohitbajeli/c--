@@ -20,4 +20,4 @@ int main()
 
    cout<<"the factorial of a no is "<<endl;
    cout<<fact(n);
-}//fdsfsdf
+}//fdsfsdfadas
