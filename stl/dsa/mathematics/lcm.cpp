@@ -23,4 +23,4 @@ int main()
   cin>>a>>b;
   cout<<"lcm is "<<lcm(a,b);
   return 0;
-}
+}//fdfd
