@@ -7,7 +7,7 @@ void leader(int arr[],int n)
 {
     int curr_leader = arr[n-1];
     cout<<curr_leader<<" ";
-    for(int i = n-2;i>=0;i++)
+    for(int i = n-2;i>=0;i--)
     {
         
         if(curr_leader<arr[i])
