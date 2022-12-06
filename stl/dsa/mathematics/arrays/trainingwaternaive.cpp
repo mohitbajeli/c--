@@ -43,4 +43,4 @@ int main()
     }
     cout<<"maximum water that can be stored is "<< water(arr,n);
     return 0; 
-}
+}//ghgh
