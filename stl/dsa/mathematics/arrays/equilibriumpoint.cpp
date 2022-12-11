@@ -20,7 +20,10 @@ bool equilbrium(int arr[],int n)
          sum-=arr[i];
     }
     return false;
+
+
 }
+//dfsfsd
 
 int main()
 {
