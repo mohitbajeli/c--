@@ -72,7 +72,7 @@ int main()
       sum_tat += ps[i].tat;
       sum_wt += ps[i].wt;
       sum_rt += ps[i].rt;
-      total_idle_time += (i==0) ? 0 : (ps[i].start_time -  ps[i-1].ct);
+      total_idle_time += (i==0) ? 0 : (ps[i].start_time  -  ps[i-1].ct);
     }
     
     length_cycle = ps[n-1].ct - ps[0].start_time; 
