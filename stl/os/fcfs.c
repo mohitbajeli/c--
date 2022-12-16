@@ -88,8 +88,8 @@ int main()
       printf("%d\t\t%d\t%d\t%d\t%d\t%d\t%d\t\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
     }
     printf("avg tat is %f \n",sum_tat/n);
-    printf("avg tat is %f \n",sum_wt/n);
-    printf("avg tat is %f \n",sum_rt/n);
+    printf("avg wt is %f \n",sum_wt/n);
+    printf("avg rt is %f \n",sum_rt/n);
     printf("throughput is %f \n",throughput);
     printf("cpu_utilisation is %f \n",cpu_utilisation*100);
 
