@@ -88,7 +88,7 @@ int main()
             sum_wt+=ps[min_index].wt;
             sum_rt+=ps[min_index].rt;
 
-            idle_time = (is_first_process==true)?0:ps[min_index].start_time-prev;
+            idle_time += (is_first_process==true)?0:ps[min_index].start_time-prev;
 
             completed++;
             is_first_process=false;
