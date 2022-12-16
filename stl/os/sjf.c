@@ -10,75 +10,112 @@ struct process_struct
     int ct,tat,wt,rt,start_time;
 }ps[100];
 
-int findmax(int a,int b)
-{
-    return a>b?a:b;
-}
-
 int findmin(int a,int b)
 {
     return a<b?a:b;
 }
 
+int findmax(int a,int b)
+{
+    return a>b?a:b;
+}
+
 int main()
 {
     int n;
-    int current_time=0,prev=0,completed=0;
-    bool is_completed[100]={false};
+    bool is_completed[100] ={false};
+    int completed=0;
+    printf("enter the no of processes\n");
+    scanf("%d",&n);
     float sum_tat=0,sum_wt=0,sum_rt=0;
-    bool is_process =true;
-    float cpu_utilisation,throughput,idle_time=0;
+    int current_time=0;
+    int idle_time=0;
+    float throughput,cpu_utilisation,length_cycle;
+    int min_arrivaltime=INT_MAX;
+    int max_completiontime=INT_MIN;
+    bool is_first_process=true;
+    int prev=0;
 
-   printf("enter the no of process\n");
-   scanf("%d",&n);
-
-   for(int i=0;i<n;i++)
-   {
-    printf("enter %d process arrival time : ",i);
-    scanf("%d",&ps[i].at);
-    ps[i].pid=i;
-   }    
-for(int i=0;i<n;i++)
-   {
-    printf("enter %d process burst time : ",i);
-    scanf("%d",&ps[i].bt);
-   }    
-   
-   while(completed!=n)
-   {
-        int min_index=-1;
-        int minimum = INT_MAX;
     for(int i=0;i<n;i++)
     {
-        if(ps[i].at<=current_time && is_completed[i]==0)
+        printf("enter %d process arrival time :",i);
+        scanf("%d",&ps[i].at);
+        ps[i].pid=i;
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        printf("enter %d process burst time : ",i);
+        scanf("%d",&ps[i].bt);
+    }
+
+    while(completed!=n)
+    {
+        int min_index=-1;
+        int minimum=INT_MAX;
+        for(int i=0;i<n;i++)
         {
-            if(ps[i].bt<minimum)
+            if(ps[i].at<=current_time && is_completed[i]==false )
             {
-                minimum=ps[i].bt;
-                min_index=i;
-            }
-            if(ps[i].bt==minimum)
-            {
-                if(ps[i].at<ps[min_index].at)
+                if(ps[i].bt<minimum)
                 {
-                    minimum = ps[i].bt;
+                    minimum=ps[i].bt;
                     min_index=i;
-                }
+                }               
+                if(ps[i].bt==minimum)
+                {
+                    if(ps[i].at<ps[min_index].at)
+                    {
+                        minimum=ps[i].bt;
+                        min_index=i;
+                    }
+                } 
             }
         }
-    }
+        if(min_index==-1)
+        {
+            current_time++;
+        }
+        else
+        {
+            ps[min_index].start_time=current_time;
+            ps[min_index].ct=ps[min_index].start_time+ps[min_index].bt;
+            ps[min_index].tat=ps[min_index].ct-ps[min_index].at;
+            ps[min_index].wt=ps[min_index].tat-ps[min_index].bt;
+            ps[min_index].rt=ps[min_index].wt;
 
-    if(min_index=-1)
+            sum_tat+=ps[min_index].tat;
+            sum_wt+=ps[min_index].wt;
+            sum_rt+=ps[min_index].rt;
+
+            idle_time = (is_first_process==true)?0:ps[min_index].start_time-prev;
+
+            completed++;
+            is_first_process=false;
+            current_time=ps[min_index].ct;
+            prev=current_time;
+            is_completed[min_index]=true;
+        }
+    }
+    for(int i=0;i<n;i++)
     {
-        current_time++;
+        max_completiontime=findmax(max_completiontime,ps[i].ct);
+        min_arrivaltime = findmin(min_arrivaltime,ps[i].at);
     }
-    else{
-        ps[min_index].start_time = current_time;
-        ps[min_index].ct=ps[min_index].start_time+ps[min_index].bt;
-        ps[min_index].tat = ps[min_index].ct-ps[min_index].at;
-        ps[min_index].wt = ps[min_index].tat-ps[min_index].bt;
-        ps[min_index].rt = ps[min_index].wt;
+    length_cycle = max_completiontime-min_arrivaltime;
 
+      printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
+    for(int i=0;i<n;i++){
+     printf("%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt); 
+
+     printf("\n");
     }
-   }
+
+    cpu_utilisation=(float)(length_cycle-idle_time)/length_cycle;
+      printf("\nAverage Turn Around time= %f ",(float)sum_tat/n);
+    printf("\nAverage Waiting Time= %f ",(float)sum_wt/n);
+    printf("\nAverage Response Time= %f ",(float)sum_rt/n);
+    printf("\nThroughput= %f",n/(float)length_cycle);    
+    printf("\nCPU Utilization(Percentage)= %f",cpu_utilisation*100);
+    return 0;
 }
