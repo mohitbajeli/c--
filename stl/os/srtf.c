@@ -129,4 +129,4 @@ int main()
     printf("\nThroughput= %f",n/(float)length_cycle);    
     printf("\nCPU Utilization(Percentage)= %f",cpu_utilization*100);
     return 0;
-}
+}//hgjh
