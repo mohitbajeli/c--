@@ -52,7 +52,7 @@ int main()
    
     while(completed!=n)
     {
-        //find process with min. burst time in ready queue at current time
+        
         int min_index = -1;
         int minimum = INT_MAX;
         for(int i = 0; i < n; i++) {
@@ -99,12 +99,11 @@ int main()
                 sum_rt += ps[min_index].rt;
                 completed++;
                 is_completed[min_index]=true;
-                //total_idle_time += (is_first_process==true) ? 0 : (ps[min_index].start_time -  prev); 
-               // prev= ps[min_index].ct; // or current_time;
+                
             }
         }
     }
-    //Calculate Length of Process completion cycle
+    
     max_completion_time = INT_MIN;
     min_arrival_time = INT_MAX;
     for(int i=0;i<n;i++)
@@ -114,7 +113,7 @@ int main()
     }
     length_cycle = max_completion_time - min_arrival_time;
 
-    //Output
+    
     printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
     for(int i=0;i<n;i++)
      printf("%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
@@ -129,4 +128,4 @@ int main()
     printf("\nThroughput= %f",n/(float)length_cycle);    
     printf("\nCPU Utilization(Percentage)= %f",cpu_utilization*100);
     return 0;
-}//hgjh
+}
