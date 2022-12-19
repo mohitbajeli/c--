@@ -35,7 +35,7 @@ int main()
       scanf("%d",&avail[i]);
     }
     int f[n], ans[n], ind = 0;
-    for (k = 0; k < n; k++) {
+    for (int k = 0; k < n; k++) {
         f[k] = 0;
     }
     int need[ n][m];
