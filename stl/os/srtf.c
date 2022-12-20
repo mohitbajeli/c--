@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 #include<stdbool.h>
 #include<limits.h>
@@ -28,7 +27,7 @@ int main()
     float bt_remaining[100];
     bool is_completed[100]={false},is_first_process=true;
     int current_time = 0;
-    int completed = 0;
+    int completed = 0;;
     float sum_tat=0,sum_wt=0,sum_rt=0,total_idle_time=0,length_cycle,prev=0;
     float cpu_utilization;
 
@@ -52,7 +51,7 @@ int main()
    
     while(completed!=n)
     {
-        
+        //find process with min. burst time in ready queue at current time
         int min_index = -1;
         int minimum = INT_MAX;
         for(int i = 0; i < n; i++) {
@@ -99,11 +98,12 @@ int main()
                 sum_rt += ps[min_index].rt;
                 completed++;
                 is_completed[min_index]=true;
-                
+                //total_idle_time += (is_first_process==true) ? 0 : (ps[min_index].start_time -  prev); 
+               // prev= ps[min_index].ct; // or current_time;
             }
         }
     }
-    
+    //Calculate Length of Process completion cycle
     max_completion_time = INT_MIN;
     min_arrival_time = INT_MAX;
     for(int i=0;i<n;i++)
@@ -113,7 +113,7 @@ int main()
     }
     length_cycle = max_completion_time - min_arrival_time;
 
-    
+    //Output
     printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
     for(int i=0;i<n;i++)
      printf("%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
