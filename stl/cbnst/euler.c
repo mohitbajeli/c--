@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define f(x,y) -x*y*y2
+#define f(x,y) x+y
 
 
 int main()
