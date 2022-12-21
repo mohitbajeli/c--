@@ -2,7 +2,7 @@
 #include<stdbool.h>
 struct process_struct
 {
-  
+  int pid;
   int at;
   int bt;
   int priority;
@@ -26,7 +26,7 @@ int main()
     printf("\nEnter Process Number\n");
      for(i=0;i<n;i++)
      {
-       scanf("%f",&ps[i].process_num);
+       scanf("%f",&ps[i].pid);
      }
     printf("\nEnter Process Arrival Time\n");
     for(i=0;i<n;i++)
