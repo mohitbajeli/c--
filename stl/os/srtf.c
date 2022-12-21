@@ -27,7 +27,7 @@ int main()
     float bt_remaining[100];
     bool is_completed[100]={false},is_first_process=true;
     int current_time = 0;
-    int completed = 0;;
+    int completed = 0;
     float sum_tat=0,sum_wt=0,sum_rt=0,total_idle_time=0,length_cycle,prev=0;
     float cpu_utilization;
 

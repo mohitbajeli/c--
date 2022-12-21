@@ -14,7 +14,7 @@ int findmax(int a,int b)
   return a>b?a:b;
 }
 
-int comparatorAT(void const *a,void const *b)
+int comparatorAT(const void *a,const void *b)
 {
   int x = ((struct process_struct *)a)->at;
   int y = ((struct process_struct *)b)->at;
@@ -25,7 +25,7 @@ int comparatorAT(void const *a,void const *b)
   return 1;
 }
 
-int comparatorPID(void const *a,void const *b)
+int comparatorPID(const void *a,const void *b)
 {
   int x = ((struct process_struct *)a)->pid;
   int y = ((struct process_struct *)b)->pid;
