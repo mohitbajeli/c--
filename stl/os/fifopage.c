@@ -27,8 +27,7 @@ int main()
         printf("frame %d\t\t",i+1);
       }
       printf("\n");
-
-    for(int i=0;i<pages;i++)
+          for(int i=0;i<pages;i++)
     {
          s=0;
         for(int j=0;j<frames;j++)
@@ -62,6 +61,8 @@ int main()
             }
             printf("\n");
         }
+
+
         float page_miss;
         page_miss =  (float)pagefaults/pages;
         float page_hit = (float)(pages-pagefaults)/pages; 
@@ -70,4 +71,3 @@ int main()
         printf("pages miss ratio is %f ",page_miss);
         return 0;
     }
-    

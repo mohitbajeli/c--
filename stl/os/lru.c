@@ -15,7 +15,7 @@ int main()
             frames[m] = -1;
     }
     
-    for(n = 0; n < total_pages; n++)
+    for(n = 0; n < total_pages; n++)  
     {
         printf("%d: ", pages[n]);
             a = 0, b = 0;
