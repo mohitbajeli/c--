@@ -161,9 +161,9 @@ int main()
   qsort((void *)ps,n, sizeof(struct process_struct),comparatorPID);
 
   //Output
-  printf("\nProcess No.\tAT\tCPU Burst Time\tStart Time\tCT\tTAT\tWT\tRT\n");
+  printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
   for(int i=0;i<n;i++)
-    printf("%d\t\t%d\t%d\t\t%d\t\t%d\t%d\t%d\t%d\n",i,ps[i].at,ps[i].bt,ps[i].start_time,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
+    printf("%d\t\t%d\t%d\t\t%d\t\t%d\t%d\t%d\n",i,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
   printf("\n");    
 
   printf("\nAverage Turn Around time= %.2f",(float)sum_tat/n);
