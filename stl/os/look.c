@@ -12,7 +12,7 @@ int comparator(const void * a, const void *b)
     return 1;    // Sort
 } 
 
-int applySCANAlgo(int total_cylinders,int request_queue[], int initial_pos, int seek_sequence[], int direction,int *sequence_size,int n)
+int applySCANAlgo(int total_cylinders,int request_queue[], int initial_pos, int seek_sequence[], int direction,int *        e,int n)
 {
 	int total_head_movement=0,j=0,k=0;
 	int left[n], right[n];

@@ -7,9 +7,9 @@ int comparator(const void * a, const void *b)
    int x =*(int *)a;
    int y =*(int *)b;
    if(x<y)
-     return -1;  // No sorting
-   else if( x>=y) // = is for stable sort
-    return 1;    // Sort
+     return -1;  
+   else if( x>=y) 
+    return 1;    
 } 
 
 int min_element(int request_queue[],int n)
@@ -38,11 +38,8 @@ int max_element(int request_queue[],int n)
 int applySCANAlgo(int total_cylinders,int request_queue[], int initial_pos, int seek_sequence[], int direction,int *sequence_size,int n)
 {
 	int total_head_movement=0,j=0,k=0;
-	int left[n+1], right[n+1];  //in worst case(corner cases), size will be n+1
-
-	// appending end values
-	// which has to be visited
-	// before reversing the direction
+	int left[n+1], right[n+1]; 
+    
 	if(direction == 0)
     {
         if(initial_pos > min_element(request_queue,n))
@@ -129,9 +126,7 @@ int main()
     printf("\nEnter the direction in which Read Write head is moving:\n ");
     printf("\nEnter 0 if moving to higher cylinder else Enter 1: ");
     scanf("%d",&direction);
-
-
-    
+   
     total_head_movement = applySCANAlgo(total_cylinders,request_queue,initial_pos,seek_sequence,direction,&sequence_size,n);
     
     

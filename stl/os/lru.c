@@ -3,13 +3,22 @@
 int main()
 {
     int m, n, position, k, l;
+    printf("enter the no of pages\n");
+    scanf("%d",&total_pages);
+    int total_frames;
+    printf("enter the total frames\n");
+    scanf("%d",&total_frames);
     int a = 0, b = 0, page_fault = 0;
     
-    int total_frames = 3;
     int frames[total_frames];
     int temp[total_frames];
-    int pages[] = {1, 2, 3, 2, 1, 5, 2, 1, 6, 2, 5, 6, 3, 1, 3, 6, 1, 2, 4, 3};
-    int total_pages = sizeof(pages)/sizeof(pages[0]);
+    int pages[total_pages];
+    printf("enter the reference string\n");
+    for(int i=0;i<total_pages;i++)
+    {
+        scanf("%d",&pages[i]);
+    }
+    
 
     for(m = 0; m < total_frames; m++){
             frames[m] = -1;

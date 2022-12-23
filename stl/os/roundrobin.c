@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<limits.h>
-#include<stdbool.h>  //for bool datatype
-#include <stdlib.h> //for qsort
+#include<stdbool.h>  
+#include <stdlib.h> 
 
 struct process_struct
 {
