@@ -97,11 +97,7 @@ int main()
     printf("\nEnter 0 if moving to higher cylinder else Enter 1: ");
     scanf("%d",&direction);
 
-    if(initial_pos < 0 || initial_pos > total_cylinders - 1)
-    {
-        printf("Wrong Initial Position Enetered !!");
-        exit(0);
-    }
+    
     
     total_head_movement = applySCANAlgo(total_cylinders,request_queue,initial_pos,seek_sequence,direction,&sequence_size,n);
     
