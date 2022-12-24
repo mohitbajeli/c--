@@ -3,6 +3,7 @@
 int main()
 {
     int m, n, position, k, l;
+    int total_pages;
     printf("enter the no of pages\n");
     scanf("%d",&total_pages);
     int total_frames;

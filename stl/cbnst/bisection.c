@@ -4,7 +4,7 @@
 
 double findvalue(double x)
 {
-    return x*x*x - 4*x-9;
+    return x*x*x - 2*x-5;
 }
 
 double bisect(double x1,double x2)
@@ -56,7 +56,7 @@ int main()
         printf("total iteration = %d root = %lf",i,x);
         return 0;
        }
-       x = x3;
+       x = x3; //important
        i++;
     }while (i<=maxiteration);
     printf("total iteration = %d root = %lf",--i,x);
