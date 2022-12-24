@@ -43,8 +43,7 @@ int main()
         for (int j = 0; j < m; j++)
             need[i][j] = max[i][j] - alloc[i][j];
     }
-  
-    for (int k = 0; k < n; k++) {
+   for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             if (f[i] == 0) {
  
