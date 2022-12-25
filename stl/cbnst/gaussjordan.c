@@ -23,7 +23,7 @@ void convertToDiagonal(float a[][n+1],int n)
              {
                for(y=0;y<n+1;y++)
                   printf("%f ",a[x][y]);
-               printf("\n");   
+               
              }
              printf("\n");
              

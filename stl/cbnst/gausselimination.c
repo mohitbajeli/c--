@@ -29,6 +29,7 @@ void convertToUpperTriangular(float a[][n+1],int n)
          } 
       }
      }
+     
 }
 
 //Performs Back Substitution to find values of Unknowns
@@ -43,7 +44,7 @@ void ApplyBackSubstitution(float a[][n+1],float value[],int n)
         sum=0;
         for(j=i+1;j<n;j++)
             sum=sum+a[i][j]*value[j];  
-        value[i] = (a[i][n]-sum)/a[i][i];
+        value[i] = (a[i][n]-sum)/ a[i][i];
     } 
 }
 
