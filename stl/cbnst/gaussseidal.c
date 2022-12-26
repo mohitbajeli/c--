@@ -65,7 +65,7 @@ void findValues(float a[][n+1],int maxIterations,float values_old[n])
           
             values_new[i]=(a[i][n] - sum)/a[i][i];
         }
-        
+        flag=0;
         //Now you have found the values of n unknowns for above iteration
         //Now check if your matching criteria satisfied , comparing with previous iteration values
         for(k=0;k<n;k++)
