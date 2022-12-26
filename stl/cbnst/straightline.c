@@ -1,35 +1,54 @@
 #include<stdio.h>
-#include<conio.h>
 #include<math.h>
+
 int main()
 {
-
-    int n,i,x[20],y[20],sumx=0,sumy=0,sumxy=0,sumx2=0;
+    int n;
     float a,b;
-    printf("\n   C program for Linear Curve Fitting \n ");
-    printf("\n Enter the value of number of terms n:");
+    float sum1=0;
+    float sum2=0;
+    float sum3=0;
+    float sum4=0;
+    printf("enter the no of unknowns\n");
     scanf("%d",&n);
-    printf("\n Enter the values of x:\n");
-    for(i=0;i<=n-1;i++)
-    {
-        scanf(" %d",&x[i]);
+    float x[n],y[n];
+    float agumented_matrix[2][3];
+    printf("enter values of x\n");
+    for(int i=0;i<n;i++)
+    scanf("%f",&x[i]);
 
-    }
-    printf("\n Enter the values of y:");
-    for(i=0;i<=n-1;i++)
+    printf("enter values of y\n");
+    for(int i =0;i<n;i++)
+    scanf("%f",&y[i]);
+    
+    for(int i=0;i<n;i++)
     {
-        scanf("%d",&y[i]);
+        sum1=sum1+x[i];
+        sum2=sum2+y[i];
+        sum3=sum3+(x[i]*y[i]);
+        sum4=sum4+(x[i]*x[i]);
     }
-    for(i=0;i<=n-1;i++)
-    {
-        sumx=sumx +x[i];
-        sumx2=sumx2 +x[i]*x[i];
-        sumy=sumy +y[i];
-        sumxy=sumxy +x[i]*y[i];
 
+    agumented_matrix[0][0]=n;
+    agumented_matrix[0][1]=sum1;
+    agumented_matrix[0][2]=sum2;
+    agumented_matrix[1][0]=sum1;
+    agumented_matrix[1][1]=sum4;
+    agumented_matrix[1][2]=sum3;
+
+    int ratio = agumented_matrix[1][0]/agumented_matrix[0][0];
+
+    for(int i=0;i<3;i++)
+    {
+        agumented_matrix[1][i]=agumented_matrix[1][i]-(ratio*agumented_matrix[0][i]);
     }
-    a=((sumx2*sumy -sumx*sumxy)*1.0/(n*sumx2-sumx*sumx)*1.0);
-    b=((n*sumxy-sumx*sumy)*1.0/(n*sumx2-sumx*sumx)*1.0);
-    printf("\n\nThe line is Y=%3.3f +%3.3f X",a,b);
-    return(0);
+
+    b = agumented_matrix[1][2]/agumented_matrix[1][1];
+    a = (agumented_matrix[0][2]-(agumented_matrix[0][1]*b))/agumented_matrix[0][0];
+    printf("\n intercept = %.2f and slope = %.2f\n\n",a,b);
+
+    printf("equation is y = %.2f + %.2fx ",a,b);
+
+
+
 }
