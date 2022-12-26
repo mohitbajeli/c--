@@ -25,4 +25,5 @@ int main()
     }
     sum = (h*sum)/2;
     printf("value of integration is %f",sum);
+    return 0;
 }
