@@ -105,7 +105,7 @@ int main()
     printf("Enter no. of iterations\n");
     scanf("%d",&maxIterations);
     float a[n][n+1];
-    float values[n];;
+    float values[n];
 
     printf("Enter the Augmented Matrix\n");
     for(int i=0;i<n;i++)

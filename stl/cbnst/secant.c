@@ -1,41 +1,41 @@
 #include<stdio.h>
 #include<math.h>
-
-double function(double x)
+#define EPSILON 0.0001  //to find answers till 4 correct decmal places
+float findValueAt(float x)
 {
-    return x*x*x - 4*x-9;
+   return x*x*x - 5*x +1;
+   //return cos(x)+2*sin(x)+x*x; transcedental Equation
 }
 
+float findX(float x1,float x2)
+{
+      return (x1*findValueAt(x2) - x2 * findValueAt(x1)) / (findValueAt(x2) - findValueAt(x1));
+}
 int main()
 {
-    double a,b,fx,fa,fb,x;
-    int steps = 0;
-    for(int i=-10;i<=10;i++)
-    {
-        a = i;
-        b = i+1;
-        if(function(a)*function(b)<0)
-        {
-            break;
-        }
-    }
-    printf("a = %lf b = %lf ",a,b);
-
+    int maxIteration,i=1;
+    float x1,x2,x;
+    printf("Enter x1 and x2\n");
+    scanf("%f%f",&x1,&x2);
+    printf("Enter Maximum no of Iterations\n");
+    scanf("%d",&maxIteration);
+    
+    x = findX(x1,x2);   
     do
     {
-        fa = function(a);
-        fb = function(b);
-        x = (a*fb-b*fa)/(fb-fa);
+      x1=x2;
+      x2=x;
+      printf("Iterations=%d  Root=%f\n",i,x);   
+      x = findX(x1,x2);  
+      if(fabs(x-x2)<EPSILON)
+      { 
+          printf("Final Root=%f  Total Iterations=%d",x,i+1);
+          return 0;
 
-        a = b;
-        b = x;
+      }
+      i++; 
+    }while(i<=maxIteration);
+    printf("Final Root=%f",x);
 
-        fa = fb;
-        fb = fx;
-
-        printf("iteration = %d  x = %.4lf\n",++steps,x);
-    } while (fabs(x-a)>=0.0001 || fabs(x-b)>=0.0001);
-    printf("root is %.4lf\n",x);
     return 0;
 }
-    
