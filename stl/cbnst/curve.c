@@ -63,7 +63,7 @@ int main()
     //....................Computations ............
     for(int i=0;i<n;i++)
     {
-        sx=sx+x[i];
+        sx=sx+x[i];//jhj
         sy=sy+y[i];
         sxy=sxy+x[i]*y[i];
         sx2y=sx2y+x[i]*x[i]*y[i];
