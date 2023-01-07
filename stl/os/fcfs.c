@@ -87,7 +87,7 @@ int main()
   for(int i=0;i<n;i++)
   {
     printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
-  }
+  }//hjg
 
   printf("avg tat is %f\n",sum_tat/n);
   printf("avg wt is %f\n",sum_wt/n);
