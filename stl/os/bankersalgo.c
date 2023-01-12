@@ -99,7 +99,7 @@ int main()
       for (int i = 0; i < n - 1; i++)
         printf(" P%d ->", ans[i]);
       printf(" P%d", ans[n - 1]);
-    } //hjghjdsx ccxxx
+    } //hjghjdsx ccxxxdcs
      
  
     return (0);
