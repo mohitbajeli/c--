@@ -21,4 +21,4 @@ int main()
    printf("\nAverage head movements = %.2f\n",(float)total_head_movement/n);
 
    return 0;
-}
+}//dsdc
