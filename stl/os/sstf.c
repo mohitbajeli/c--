@@ -13,7 +13,7 @@ int findclosestCylinder(int initial_pos, bool visited[],int request_queue[],int 
       if(visited[i] == false && abs(initial_pos - request_queue[i]) < min)
       {
           min = abs(initial_pos - request_queue[i]);
-          min_index = i;//gjjfhgfhg
+          min_index = i;//gjjfhgfhgdfg
       }
   }
   return min_index;
