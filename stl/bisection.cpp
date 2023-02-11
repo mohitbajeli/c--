@@ -15,4 +15,4 @@ int ibt(double a,double x,double b)
 int main()
 {
 
-}
+}//knk
