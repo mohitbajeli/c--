@@ -14,5 +14,5 @@ int ibt(double a,double x,double b)
 
 int main()
 {
-   cout<<"mohit"
+   cout<<"mohit";
 }//knkdacsdzvcbasdda
